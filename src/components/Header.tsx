@@ -6,9 +6,9 @@ import Title from "./Title";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Span from "./Span";
+import Button from "./Button";
 
-const Header = (props: any) => {
-    const HeaderComponent = styled.header`
+const HeaderComponent = styled.header`
         background-color: #0F52BA;
         display: flex;
         padding-left: 4.063rem;
@@ -29,7 +29,7 @@ const Header = (props: any) => {
         display: flex;
         justify-content: space-evenly;
         align-items: ${props => props.header ? 'flex-end' : 'center'};
-        background-color: ${props => props.card ? "#FFFFFF" : null};
+        background-color: ${props => props.card ? null : null};
         height: ${props => props.card ? '2.813rem' : 'auto'};
         width: ${props => props.card ? "5.625rem" : "auto"};
         border-radius: ${props => props.card ? "0.5rem" : "0rem"};
@@ -40,6 +40,9 @@ const Header = (props: any) => {
         }
     `
 
+const Header = (props: any) => {
+
+
     return (
         <HeaderComponent>
             <Column card={false} header>
@@ -48,8 +51,16 @@ const Header = (props: any) => {
             </Column>
 
             <Column card header={false}>
-                <FontAwesomeIcon icon={faShoppingCart} />
-                <Span number={8} />
+                <Button
+                    width="100%" height="100%" justifyContent="space-around"
+                    background="#ffffff" backgroundHover="#E9E9E9"
+                    borderWidth="0" borderRadius="0.5rem"
+                    onReturn={() => console.log("Cliquei aqui na função do Carrinho")}
+                >
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                    <Span number={8} />
+                </Button>
+
             </Column>
         </HeaderComponent>
     )

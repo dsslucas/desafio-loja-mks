@@ -1,12 +1,10 @@
 import styled from 'styled-components';
+import { SpanComponent } from './Styles';
 
 const Span = (props: any) => {
-  const SpanComponent = styled.span`
-    font-size: 18px;
-    font-weight: bold;
-  `
+
   return (
-    <SpanComponent onClick={() => console.log("Cliquei aqui")}>
+    <SpanComponent {...props} onClick={() => console.log("Cliquei aqui")}>
       {props.number}
     </SpanComponent>
   )

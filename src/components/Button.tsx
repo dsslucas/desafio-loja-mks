@@ -1,5 +1,12 @@
-import React from "react";
+import React, { Component, useState } from "react";
+import { ButtonComponent } from "./Styles";
 
-export default (props: any) => {
-    
+const Button = (props: any) => {
+    return (
+        <ButtonComponent {...props} onClick={() => props.onReturn()}>
+            {props.children}
+        </ButtonComponent>
+    )
 }
+
+export default Button
