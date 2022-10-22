@@ -1,12 +1,14 @@
 import React from "react";
 import styled from 'styled-components';
 
-export default (props: any) => {
-    const Image = styled.img`
+const Image = (props: any) => {
+    const ImageComponent = styled.img`
         max-width: 67%;
     `
 
     return (
-        <Image src={props.image} />
+        <ImageComponent src={props.image} />
     )
 }
+
+export default Image

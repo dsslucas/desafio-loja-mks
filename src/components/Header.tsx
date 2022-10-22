@@ -4,11 +4,11 @@ import Subtitle from "./Subtitle";
 import Title from "./Title";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faCircle, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import Span from "./Span";
 
-export default (props: any) => {
-    const Header = styled.header`
+const Header = (props: any) => {
+    const HeaderComponent = styled.header`
         background-color: #0F52BA;
         display: flex;
         padding-left: 4.063rem;
@@ -41,7 +41,7 @@ export default (props: any) => {
     `
 
     return (
-        <Header>
+        <HeaderComponent>
             <Column card={false} header>
                 <Title titulo="MKS" />
                 <Subtitle subtitulo="Sistemas" />
@@ -51,8 +51,8 @@ export default (props: any) => {
                 <FontAwesomeIcon icon={faShoppingCart} />
                 <Span number={8} />
             </Column>
-
-
-        </Header>
+        </HeaderComponent>
     )
 }
+
+export default Header

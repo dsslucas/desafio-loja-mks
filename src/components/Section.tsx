@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import Card from "./Card";
 
-const Section = styled.section`
+const SectionComponent = styled.section`
     min-height: calc(100vh - 8.438rem);
     padding: 4.063rem;
     display: flex;
@@ -33,9 +33,9 @@ const GridWrapper = styled.div`
     }
 `
 
-export default (props: any) => {
+const Section = (props: any) => {
     return (
-        <Section>
+        <SectionComponent>
             <GridWrapper>
                 <Card />
                 <Card />
@@ -46,7 +46,8 @@ export default (props: any) => {
                 <Card />
                 <Card />
             </GridWrapper>
-
-        </Section>
+        </SectionComponent>
     )
 }
+
+export default Section

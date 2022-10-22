@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 
-const Title = styled.h1`
+const TitleComponent = styled.h1`
   font-family: Montserrat;
   color: #FFFFFF;
   @media screen and (max-width: 600px){
@@ -9,10 +9,12 @@ const Title = styled.h1`
 }
 `
 
-export default (props: any) => {
+const Title = (props: any) => {
     return (
-        <Title>
+        <TitleComponent>
             {props.titulo}
-        </Title>
+        </TitleComponent>
     )
 }
+
+export default Title

@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import Card from '../components/Card'
+import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Section from '../components/Section'
 
-export default (props: any) => {
+const Home = (props: any) => {
     return (
         <>
             <Header />
@@ -13,3 +12,5 @@ export default (props: any) => {
         </>
     )
 }
+
+export default Home

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 
-const Footer = styled.footer`
+const FooterComponent = styled.footer`
   display: flex;
   flexDirection: column;
   padding-left: 4.063rem;
@@ -13,11 +13,12 @@ const Footer = styled.footer`
   text-align: center;
   font-size: 0.75rem
 `
-
-export default (props: any) => {
+const Footer = (props: any) => {
     return (
-        <Footer>
+        <FooterComponent>
             MKS sistemas © Todos os direitos reservados
-        </Footer>
+        </FooterComponent>
     )
 }
+
+export default Footer

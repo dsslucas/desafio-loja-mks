@@ -4,7 +4,7 @@ import React from "react";
 import styled from 'styled-components';
 import Image from "./Image";
 
-export default (props: any) => {
+const Card = (props: any) => {
     const Card = styled.div`
         background-color: #FFFFFF;
         width: 13.598rem;
@@ -99,3 +99,5 @@ export default (props: any) => {
         </Card>
     )
 }
+
+export default Card
