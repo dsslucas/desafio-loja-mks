@@ -28,7 +28,7 @@ export default (props: any) => {
       width: ${props => props.card ? "5.625rem" : "auto"};
       border-radius: ${props => props.card ? "0.5rem" : "0rem"}
   `
-  
+
     return (
         <Header>
             <Column card={false} header>
@@ -37,8 +37,8 @@ export default (props: any) => {
             </Column>
 
             <Column card header={false}>
-                <FontAwesomeIcon icon={faShoppingCart}/>
-                <Span number={8}/>
+                <FontAwesomeIcon icon={faShoppingCart} />
+                <Span number={8} />
             </Column>
 
 

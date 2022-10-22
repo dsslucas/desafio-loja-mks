@@ -7,7 +7,7 @@ import Home from './screens/Home';
 const Wrapped = styled.div`
   background-color: #E5E5E5;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
 `
 

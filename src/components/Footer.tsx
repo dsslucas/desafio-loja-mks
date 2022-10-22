@@ -6,13 +6,16 @@ const Footer = styled.footer`
   flexDirection: column;
   padding-left: 4.063rem;
   padding-right: 4.063rem;
+  background-color: #EEEEEE;
+  height: 2.125rem;
+  align-items: center;
+  justify-content: center
 `
 
 export default (props: any) => {
     return (
         <Footer>
-            <h1>Content</h1>
-            <p>Anônimo</p>
+            MKS sistemas © Todos os direitos reservados
         </Footer>
     )
 }
