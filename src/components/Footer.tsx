@@ -9,7 +9,9 @@ const Footer = styled.footer`
   background-color: #EEEEEE;
   height: 2.125rem;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  text-align: center;
+  font-size: 0.75rem
 `
 
 export default (props: any) => {

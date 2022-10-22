@@ -10,9 +10,11 @@ export default (props: any) => {
   const Span = styled.span`
     font-size: 18px;
     font-weight: bold;
+
+    
   `
   return (
-    <Span>
+    <Span onClick={() => console.log("Cliquei aqui")}>
       {props.number}
     </Span>
   )

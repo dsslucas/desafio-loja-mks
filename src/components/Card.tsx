@@ -10,6 +10,10 @@ export default (props: any) => {
         width: 13.598rem;
         height: 17.813rem;
         border-radius: 0.5rem;
+
+        @media screen and (max-width: 600px){
+            width: 15.656rem;
+        }
     `
 
     const CardMainContent = styled.div`
@@ -89,7 +93,9 @@ export default (props: any) => {
 
 
 
-            <CardButton><FontAwesomeIcon icon={faBagShopping} /> COMPRAR</CardButton>
+            <CardButton onClick={() => console.log("Cliquei")}>
+                <FontAwesomeIcon icon={faBagShopping} /> COMPRAR
+            </CardButton>
         </Card>
     )
 }

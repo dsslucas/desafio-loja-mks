@@ -8,6 +8,11 @@ const Section = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 600px){
+        padding: 0.75rem;
+    };
+
     @media (min-width: 1400px) {
         padding: 0;
         background-color: red
@@ -19,6 +24,13 @@ const GridWrapper = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 300px 300px;
     grid-gap: 15px;
+
+    @media only screen and (max-width: 990px){
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap
+    }
 `
 
 export default (props: any) => {
