@@ -34,19 +34,23 @@ import { Cart, AddItemToCart, AddQtdSameItem, RemoveItemToCart, RemoveQtdSameIte
 //     }
 // }
 
-export const addItemToCart = () : AddItemToCart => ({
-    type: 'ADD_ITEM_TO_CART'
+export const addItemToCart = (data: any): AddItemToCart => ({
+    type: 'ADD_ITEM_TO_CART',
+    payload: data
 });
 
-export const addQtdSameItem = () : AddQtdSameItem => ({
-    type: 'ADD_QTD_SAME_ITEM'        
+export const addQtdSameItem = (data: any): AddQtdSameItem => ({
+    type: 'ADD_QTD_SAME_ITEM',
+    payload: data
 })
 
-export const removeItemCart = () : RemoveItemToCart => ({
-    type: 'REMOVE_ITEM_TO_CART'
+export const removeItemCart = (data: any): RemoveItemToCart => ({
+    type: 'REMOVE_ITEM_TO_CART',
+    payload: data
 })
 
-export const removeQtdSameItem = () : RemoveQtdSameItem => ({
-    type: 'REMOVE_QTD_SAME_ITEM'
+export const removeQtdSameItem = (data: any): RemoveQtdSameItem => ({
+    type: 'REMOVE_QTD_SAME_ITEM',
+    payload: data
 })
 

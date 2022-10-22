@@ -16,19 +16,23 @@ export interface Cart {
 }
 
 export interface AddItemToCart extends Action {
-    type: 'ADD_ITEM_TO_CART'
+    type: 'ADD_ITEM_TO_CART',
+    payload: any
 }
 
 export interface AddQtdSameItem extends Action {
-    type: "ADD_QTD_SAME_ITEM"
+    type: "ADD_QTD_SAME_ITEM",
+    payload: any
 }
 
 export interface RemoveItemToCart extends Action {
-    type: "REMOVE_ITEM_TO_CART"
+    type: "REMOVE_ITEM_TO_CART",
+    payload: any
 }
 
 export interface RemoveQtdSameItem extends Action {
-    type: "REMOVE_QTD_SAME_ITEM"
+    type: "REMOVE_QTD_SAME_ITEM",
+    payload: any
 }
 
 export type ApplicationAction = | AddItemToCart | AddQtdSameItem | RemoveItemToCart | RemoveQtdSameItem;

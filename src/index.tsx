@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer, { initialState } from './redux/reducers/Buy';
 import {Provider} from 'react-redux'
+import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 
 
 const root = ReactDOM.createRoot(
@@ -14,14 +15,20 @@ const root = ReactDOM.createRoot(
 );
 
 const store = configureStore({
-  reducer
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ['payload.onReturn'],
+      },
+    }),
 })
 
 root.render(
   <Provider store={store}>
     <App />
   </Provider>
-
 );
 
 // If you want to start measuring performance in your app, pass a function

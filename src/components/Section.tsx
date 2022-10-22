@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { connect, MapDispatchToProps, useDispatch } from "react-redux";
 import styled from 'styled-components';
+import { addItemToCart, addQtdSameItem, removeItemCart, removeQtdSameItem } from "../redux/actions/Buy";
 import api from "../services/api";
 import Card from "./Card";
 
@@ -38,9 +40,13 @@ const GridWrapper = styled.div`
     }
 `
 
+const initialState: any = null
+
 function Section(props: any) {
 
     const [apiContent, setApiContent] = useState([])
+    const [listItems, setListItems] = useState([{}])
+    const dispatch = useDispatch()
 
     useEffect(() => {
         console.log("Recarreguei a página")
@@ -52,16 +58,43 @@ function Section(props: any) {
         respApi()
     }, []);
 
+    // Manda os dados para o Redux
+    function SendDataToRedux(data:any, type: string){
+        switch(type){
+            case "ADD_ITEM_CARRINHO": {
+                console.log("COMPRAR")
+                dispatch(addItemToCart(data))
+                break;
+            }
+            case "ADD_QTD_ITEM": {
+                dispatch(addQtdSameItem(data))
+                break
+            }
+            case "REMOVER_ITEM_CARRINHO": {
+                dispatch(removeItemCart(data))
+                break
+            }
+            case "REMOVE_QTD_ITEM": {
+                dispatch(removeQtdSameItem(data))
+                break
+            }
+            default: console.log("Não entrei em nenhum")
+        }
+    }
+
     return (
         <SectionComponent>
             <GridWrapper>
                 {apiContent.map((item:any, index:any) => {
                     return (
                         <Card 
-                            key={index} id={item.id}
+                            key={index}
+                            item={item}
+                            id={item.id}
                             name={item.name} brand={item.brand}
                             description={item.description} photo={item.photo}
                             price={Math.trunc(item.price)}
+                            return={SendDataToRedux}
                         />
                         )
                     })
@@ -71,4 +104,12 @@ function Section(props: any) {
     )
 }
 
+// const mapDispatchToProps = (dispatch:any) => {
+//     return {
+//         addShoppingList: (test:any) => dispatch(addItemToCart())
+//     }
+// }
+
+
 export default Section
+// export default connect(null, mapDispatchToProps)(Section)

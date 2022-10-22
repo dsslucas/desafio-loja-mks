@@ -55,7 +55,7 @@ const Header = (props: any) => {
                     width="100%" height="100%" justifyContent="space-around"
                     background="#ffffff" backgroundHover="#E9E9E9"
                     borderWidth="0" borderRadius="0.5rem"
-                    onReturn={() => console.log("Cliquei aqui na função do Carrinho")}
+                    onClick={() => console.log("Botão de Carrinho")}
                 >
                     <FontAwesomeIcon icon={faShoppingCart} />
                     <Span number={8} />

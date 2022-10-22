@@ -36,11 +36,13 @@ const Card = (props: any) => {
                 padding="0" margin="0" justifyContent="space-evenly"
                 borderLeftRightBottom="0.5rem" borderWidth="0"
                 borderColor="#0F52BA" borderColorHover=" #0D47A0"
-                data={props}
-                onReturn={(res:any) => console.log("Olha o que eu recebi: ", res)}
+                // data={props}
+                onClick={() => props.return(props.item, "ADD_ITEM_CARRINHO")}
             >
                 <FontAwesomeIcon icon={faBagShopping} />COMPRAR
             </Button>
+
+
 
 
             {/* <CardButton onClick={() => console.log("Cliquei")}>

@@ -3,7 +3,7 @@ import { ButtonComponent } from "./Styles";
 
 const Button = (props: any) => {
     return (
-        <ButtonComponent {...props} onClick={() => props.onReturn(props.data)}>
+        <ButtonComponent {...props}>
             {props.children}
         </ButtonComponent>
     )
