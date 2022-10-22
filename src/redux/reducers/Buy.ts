@@ -20,6 +20,7 @@ const reducer = (state = initialState, action: Action) => {
             //AddItemToCart lol = (AddItemToCart)action;
             //console.log("[REDUCER] ADICIONAR ITEM: ", temp.payload);
             console.log("[ESTADO ANTERIOR: ", state)
+            break;
         }
         case 'ADD_QTD_ITEM': {
             console.log("[REDUCER] ADICIONAR QTD AO ITEM: ", action)
