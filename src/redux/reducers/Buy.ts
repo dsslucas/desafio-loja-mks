@@ -1,5 +1,4 @@
-import type { Action, Reducer } from '@reduxjs/toolkit'
-import { arrayBuffer } from 'stream/consumers'
+import type { Action } from '@reduxjs/toolkit'
 import { AddItemToCart } from '../actions/ActionTypes'
 
 export const initialState: any = {
@@ -18,7 +17,7 @@ const reducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case 'ADD_ITEM_TO_CART': {
             //AddItemToCart lol = (AddItemToCart)action;
-            //console.log("[REDUCER] ADICIONAR ITEM: ", temp.payload);
+            console.log("[REDUCER] ADICIONAR ITEM: ", temp.payload);
             console.log("[ESTADO ANTERIOR: ", state)
             break;
         }

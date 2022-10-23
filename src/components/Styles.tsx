@@ -15,7 +15,9 @@ interface Props {
     borderRadius?: string;
     backgroundHover?: string;
     borderColorHover?: string;
-    size?: string
+    size?: string;
+    fontWeight?: string;
+    lineHeight?: string
 }
 
 export const ButtonComponent = styled.button<Props>`
@@ -33,6 +35,12 @@ export const ButtonComponent = styled.button<Props>`
     border-color: ${props => props.borderColor};
     border-width: ${props => props.borderWidth};
     border-radius: ${props => props.borderRadius};
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: ${props => props.fontWeight};
+    font-size: ${props => props.size};
+    line-height: ${props => props.lineHeight};
     &:hover{
         background-color: ${props => props.backgroundHover};
         border-color: ${props => props.borderColorHover}
@@ -41,8 +49,17 @@ export const ButtonComponent = styled.button<Props>`
 
 // Span
 export const SpanComponent = styled.span`
-    font-size: 1.125rem;
-    font-weight: bold;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+
+    @media screen and (max-width: 600px){
+        font-size: 12px;
+        line-height: 15px;
+    }
 `
 // 
 // Card
@@ -77,10 +94,15 @@ export const CardTitleAndPrice = styled.div`
 `
 
 export const CardTitle = styled.h4`
-    color: #2C2C2C;
     width: 65%;
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C2C2C;
 `
 
 export const CardPrice = styled.span`
@@ -100,9 +122,28 @@ export const CardTextProduct = styled.div`
     padding-bottom: 10px
 `
 
-export const CardDescription = styled.p<Props>`
+export const CardDescriptionPrice = styled.p<Props>`
+    font-family: 'Montserrat';
     color: ${props => props.color};
     font-size: ${props => props.size};
+    font-style: normal;
+    font-weight: ${props => props.fontWeight};
+    line-height: ${props => props.lineHeight};
+`
+
+export const CardDescriptionItem = styled.p<Props>`
+    font-family: 'Montserrat';
+    color: ${props => props.color};
+    font-size: ${props => props.size};
+    font-style: normal;
+    font-weight: ${props => props.fontWeight};
+    line-height: ${props => props.lineHeight};
+
+    @media screen and (max-width: 600px){
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 12px;
+    }
 `
 
 // Imagem

@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { SpanComponent } from './Styles';
 
 const Span = (props: any) => {

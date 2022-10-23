@@ -1,4 +1,3 @@
-import React, { Component, useState } from "react";
 import { ButtonComponent } from "./Styles";
 
 const Button = (props: any) => {
