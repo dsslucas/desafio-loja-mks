@@ -17,8 +17,44 @@ interface Props {
     borderColorHover?: string;
     size?: string;
     fontWeight?: string;
-    lineHeight?: string
+    lineHeight?: string;
+    titleHeader?: string;
+    imageWidth?: string;
+    marginLeft?: string;
 }
+
+export const TitleComponent = styled.h1<Props>`
+    font-family: 'Montserrat';
+    color: ${props => props.color ? props.color : '#FFFFFF'};
+    font-style: normal;
+    font-weight: ${props => props.fontWeight};
+    font-size: ${props => props.size};
+    line-height: ${props => props.lineHeight};
+    mix-blend-mode: ${props => props.titleHeader ? 'normal' : 'none'};
+    width: ${props => props.width ? props.width : 'auto'};
+
+    @media screen and (max-width: 600px){
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 19px;
+    }
+`
+
+export const SubtitleComponent = styled.p<Props>`
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: ${props => props.color};
+    font-weight: ${props => props.fontWeight};
+    font-size: ${props => props.size};
+    line-height: ${props => props.lineHeight};
+    color: ${props => props.color};
+    mix-blend-mode: normal;
+    margin-left: ${props => props.marginLeft ? props.marginLeft : '0'};
+
+    @media screen and (max-width: 600px){
+        font-size: 16px;
+    }
+`
 
 export const ButtonComponent = styled.button<Props>`
     display: flex;
@@ -48,24 +84,25 @@ export const ButtonComponent = styled.button<Props>`
 `
 
 // Span
-export const SpanComponent = styled.span`
+export const SpanComponent = styled.span<Props>`
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 900;
-    font-size: 18px;
-    line-height: 22px;
-    color: #000000;
+    font-weight: ${props => props.fontWeight};
+    font-size: ${props => props.size};
+    line-height: ${props => props.lineHeight};
+    color: ${props => props.color};
 
     @media screen and (max-width: 600px){
         font-size: 12px;
         line-height: 15px;
     }
 `
-// 
+ 
 // Card
 export const CardComponent = styled.div`
     background-color: #FFFFFF;
     width: 13.598rem;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
     border-radius: 0.5rem;
 
     @media screen and (max-width: 600px){
@@ -147,6 +184,6 @@ export const CardDescriptionItem = styled.p<Props>`
 `
 
 // Imagem
-export const ImageComponent = styled.img`
-    width: fit-content
+export const ImageComponent = styled.img<Props>`
+    width: ${props => props.imageWidth}
 `

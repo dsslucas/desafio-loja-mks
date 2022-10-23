@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { connect, useSelector } from "react-redux";
 import styled from 'styled-components';
 import api from "../services/api";
 import Card from "./Card";
@@ -39,8 +40,23 @@ const GridWrapper = styled.div`
 `
 
 function Section(props: any) {
-
+    // Conteúdo vindo da API
     const [apiContent, setApiContent] = useState([])
+
+    // Armazenamento dos IDs dos produtos, importante para desativar o botão para a compra do mesmo produto
+    const array: any = new Set();
+
+    // Vindo do Redux
+    const { state } = props
+    console.log("O que vem do State: ", state)
+
+    if (Array.isArray(state)) {
+        state.map((item: any) => {
+            array.add(item.id)
+        })
+    }
+
+    console.log("IDs: ", array)
 
     useEffect(() => {
         console.log("Recarreguei a página")
@@ -52,25 +68,35 @@ function Section(props: any) {
         respApi()
     }, []);
 
+    // if (item.id)
+    //     // return (
+    //     //     <Card
+    //     //         key={index}
+    //     //         item={item}
+    //     //         idReturnedRedux={array}
+    //     //     />
+    //     // )
+
     return (
         <SectionComponent>
             <GridWrapper>
-                {apiContent.map((item:any, index:any) => {
+                {apiContent.map((item: any, index: any) => {
                     return (
-                        <Card 
+                        <Card
                             key={index}
                             item={item}
-                            id={item.id}
-                            name={item.name} brand={item.brand}
-                            description={item.description} photo={item.photo}
-                            price={Math.trunc(item.price)}
+                            idReturnedRedux={array}
                         />
-                        )
-                    })
+                    )
+                })
                 }
             </GridWrapper>
         </SectionComponent>
     )
 }
 
-export default Section
+function mapStateToProps(state: any) {
+    return { state }
+}
+
+export default connect(mapStateToProps)(Section)
