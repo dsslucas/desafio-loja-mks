@@ -34,7 +34,8 @@ export interface RemoveItemToCart extends Action {
 
 export interface RemoveQtdSameItem extends Action {
     type: "REMOVE_QTD_SAME_ITEM",
-    payload: any
+    currentState: any,
+    itemInformedToDecreaseQtd: any,
 }
 
 export interface ButtonListCart extends Action {

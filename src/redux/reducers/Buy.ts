@@ -1,5 +1,5 @@
 import type { Action } from '@reduxjs/toolkit'
-import { AddItemToCart, AddQtdSameItem, RemoveItemToCart } from '../actions/ActionTypes'
+import { AddItemToCart, AddQtdSameItem, RemoveItemToCart, RemoveQtdSameItem } from '../actions/ActionTypes'
 
 export const initialState: any = []
 
@@ -8,6 +8,7 @@ const buyReducer = (state = initialState, action: Action) => {
     const removeItem = action as RemoveItemToCart;
 
     const increaseQtdItem = action as AddQtdSameItem;
+    const decreaseQtdItem = action as RemoveQtdSameItem;
     switch (action.type) {
         case 'ADD_ITEM_TO_CART': {
             // Primeiro dado que entra
@@ -38,7 +39,6 @@ const buyReducer = (state = initialState, action: Action) => {
             break;
         }
         case 'ADD_QTD_SAME_ITEM': {
-            console.log(increaseQtdItem)
             const newList = increaseQtdItem.currentState.map((item: any) => {
                 if (item.id === increaseQtdItem.itemInformedToIncreaseQtd.id) item.qtd = item.qtd + 1
                 return item
@@ -50,8 +50,11 @@ const buyReducer = (state = initialState, action: Action) => {
             return newList
         }
         case 'REMOVE_QTD_SAME_ITEM': {
-            console.log("[REDUCER] RETIRAR QTD AO ITEM: ", action)
-            break;
+            const newList = decreaseQtdItem.currentState.map((item: any) => {
+                if (item.id === decreaseQtdItem.itemInformedToDecreaseQtd.id) item.qtd = item.qtd - 1
+                return item
+            })
+            return newList
         }
         default: return state
     }

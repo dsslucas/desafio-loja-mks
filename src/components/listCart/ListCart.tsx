@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { addQtdSameItem, removeItemCart } from "../../redux/actions/Buy";
+import { addQtdSameItem, removeItemCart, removeQtdSameItem } from "../../redux/actions/Buy";
 import { buttonListCart } from "../../redux/actions/Page";
 import Button from "../button/Button";
 import Image from "../image/Image";
@@ -96,7 +96,7 @@ const ListCart = (props: any) => {
                                             smFontSize="24px" smFontWeight="400" smLineHeight="29.26px"
                                             disabled={item.qtd <= 1 ? true : false}
                                             style={item.qtd <= 1 ? { cursor: "not-allowed" } : { cursor: "pointer" }}
-                                            
+                                            onClick={item.qtd <= 1 ? () => null : () => dispatch(removeQtdSameItem(shoppingList, item))}                                            
                                         >
                                             -
                                         </Button>

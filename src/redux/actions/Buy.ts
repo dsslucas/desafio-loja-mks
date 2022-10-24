@@ -17,7 +17,8 @@ export const removeItemCart = (currentState: any, itemInformedToExclude: any): R
     itemInformedToExclude: itemInformedToExclude
 })
 
-export const removeQtdSameItem = (data: any): RemoveQtdSameItem => ({
+export const removeQtdSameItem = (currentState: any, itemInformedToDecreaseQtd: any): RemoveQtdSameItem => ({
     type: 'REMOVE_QTD_SAME_ITEM',
-    payload: data
+    currentState: currentState,
+    itemInformedToDecreaseQtd: itemInformedToDecreaseQtd
 })
