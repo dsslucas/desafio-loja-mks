@@ -19,7 +19,7 @@ const Card = (props: any) => {
         <CardComponent {...props} opacity={menuOpened ? '0.4' : "1"}>
             <CardMainContent>
                 <CardImage>
-                    <Image image={item.photo} imageWidth="fit-content" smWidth="fit-content" />
+                    <Image image={item.photo} imageWidth="120px" smWidth="128px" />
                 </CardImage>
 
                 <CardTitleAndPrice>
