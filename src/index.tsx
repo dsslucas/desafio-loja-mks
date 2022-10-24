@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from './redux/reducers/Buy';
-import {Provider} from 'react-redux'
+import buyReducer from './redux/reducers/Buy';
+import pageReducer from './redux/reducers/Page';
+import { Provider } from 'react-redux'
 
 
 const root = ReactDOM.createRoot(
@@ -13,14 +14,10 @@ const root = ReactDOM.createRoot(
 );
 
 const store = configureStore({
-  reducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        // Ignore these action types
-        ignoredActions: ['payload.onReturn'],
-      },
-    }),
+  reducer: {
+    buy: buyReducer,
+    page: pageReducer
+  }
 })
 
 root.render(

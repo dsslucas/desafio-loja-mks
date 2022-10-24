@@ -35,4 +35,9 @@ export interface RemoveQtdSameItem extends Action {
     payload: any
 }
 
-export type ApplicationAction = | AddItemToCart | AddQtdSameItem | RemoveItemToCart | RemoveQtdSameItem;
+export interface ButtonListCart extends Action {
+    type: "BUTTON_LIST_CART",
+    payload: any
+}
+
+export type ApplicationAction = | AddItemToCart | AddQtdSameItem | RemoveItemToCart | RemoveQtdSameItem | ButtonListCart;

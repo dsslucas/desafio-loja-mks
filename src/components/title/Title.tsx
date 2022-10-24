@@ -1,5 +1,4 @@
 import React from "react";
-import styled from 'styled-components';
 import { TitleComponent } from "./Styles";
 
 // const TitleComponent = styled.h1`

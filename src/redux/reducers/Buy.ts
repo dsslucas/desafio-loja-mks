@@ -12,7 +12,7 @@ export const initialState: any = {
     qtd: null
 }
 
-const reducer = (state = initialState, action: Action) => {
+const buyReducer = (state = initialState, action: Action) => {
     const temp = action as AddItemToCart;
     // console.log(`
     // DENTRO DO REDUCER:
@@ -63,4 +63,4 @@ const reducer = (state = initialState, action: Action) => {
     }
 }
 
-export default reducer
+export default buyReducer

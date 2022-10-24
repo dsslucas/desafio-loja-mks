@@ -1,43 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
 import styled from 'styled-components';
-import api from "../services/api";
-import Card from "./Card";
-
-const SectionComponent = styled.section`
-    min-height: calc(100vh - 8.438rem);
-    padding: 4.063rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-
-    @media screen and (max-width: 600px){
-        padding: 0.75rem;
-    };
-
-    @media (min-width: 1200px) {
-        
-    }
-
-    @media (min-width: 1400px) {
-        padding: 0;
-    }
-`
-
-const GridWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 310px;
-    grid-gap: 22.44px;
-
-    @media only screen and (max-width: 990px){
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap
-    }
-`
+import api from "../../services/api";
+import Card from "../card/Card";
+import { GridWrapper, SectionComponent } from "./Styles";
 
 function Section(props: any) {
     // Conteúdo vindo da API
@@ -47,20 +13,16 @@ function Section(props: any) {
     const array: any = new Set();
 
     // Vindo do Redux
-    const { state } = props
-    console.log("O que vem do State: ", state)
+    const { buy } = props
+    const { page } = props
 
-    if (Array.isArray(state)) {
-        state.map((item: any) => {
+    if (Array.isArray(buy)) {
+        buy.map((item: any) => {
             array.add(item.id)
         })
     }
 
-    console.log("IDs: ", array)
-
     useEffect(() => {
-        console.log("Recarreguei a página")
-
         async function respApi() {
             const { data } = await api.get('/products?page=1&rows=10&sortBy=id&orderBy=ASC')
             setApiContent(data.products)
@@ -68,17 +30,11 @@ function Section(props: any) {
         respApi()
     }, []);
 
-    // if (item.id)
-    //     // return (
-    //     //     <Card
-    //     //         key={index}
-    //     //         item={item}
-    //     //         idReturnedRedux={array}
-    //     //     />
-    //     // )
-
     return (
-        <SectionComponent>
+        <SectionComponent
+            background={page === true ? "rgba(229,229,229,0.68)" : "#E5E5E5"}
+            opacity={page === true ? "0.5" : "1"}
+        >
             <GridWrapper>
                 {apiContent.map((item: any, index: any) => {
                     return (
@@ -86,6 +42,7 @@ function Section(props: any) {
                             key={index}
                             item={item}
                             idReturnedRedux={array}
+                            menuOpened={page}
                         />
                     )
                 })
@@ -96,7 +53,10 @@ function Section(props: any) {
 }
 
 function mapStateToProps(state: any) {
-    return { state }
+    return {
+        buy: state.buy,
+        page: state.page
+    }
 }
 
 export default connect(mapStateToProps)(Section)

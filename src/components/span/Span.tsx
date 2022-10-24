@@ -3,7 +3,7 @@ import { SpanComponent } from './Styles';
 const Span = (props: any) => {
 
   return (
-    <SpanComponent {...props} onClick={() => console.log("Cliquei aqui")}>
+    <SpanComponent {...props}>
       {props.number}
     </SpanComponent>
   )

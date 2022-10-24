@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { addItemToCart } from "../redux/actions/Buy";
-import Button from "./Button";
-import Image from "./Image";
+import { addItemToCart } from "../../redux/actions/Buy";
+import Button from "../button/Button";
+import Image from "../image/Image";
 
 import { CardComponent, CardDescriptionItem, CardDescriptionPrice, CardImage, CardMainContent, CardPrice, CardTextProduct, CardTitle, CardTitleAndPrice } from "./Styles";
 
 const Card = (props: any) => {
     const dispatch = useDispatch()
-    const { idReturnedRedux, item } = props;
+    const { idReturnedRedux, item, menuOpened } = props;
     const disabled = idReturnedRedux.has(item.id);
     return (
         <CardComponent {...props}>
@@ -43,15 +43,15 @@ const Card = (props: any) => {
             </CardMainContent>
 
             <Button
-                background="#0F52BA" backgroundHover={disabled ? "#0F52BA" : "#0D47A0"} color="#FFFFFF"
+                background="#0F52BA" backgroundHover={disabled || menuOpened ? "#0F52BA" : "#0D47A0"} color="#FFFFFF"
                 width="100%" height="31.91px"
                 padding="0" margin="0" justifyContent="space-evenly"
                 borderLeftRightBottom="0.5rem" borderWidth="0"
-                borderColor="#0F52BA" borderColorHover={disabled ? "#0F52BA" : "#0D47A0"}
-                style={disabled ? { cursor: "not-allowed" } : { cursor: "pointer" }}
+                borderColor="#0F52BA" borderColorHover={disabled || menuOpened ? "#0F52BA" : "#0D47A0"}
+                style={disabled || menuOpened ? { cursor: "not-allowed" } : { cursor: "pointer" }}
                 // data={props}
                 fontWeight="600" size="14px" lineHeight="18px"
-                disabled={disabled}
+                disabled={disabled || menuOpened}
                 onClick={() => {
                     dispatch(addItemToCart(item))
                 }}

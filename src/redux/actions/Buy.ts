@@ -1,4 +1,4 @@
-import { AddItemToCart, AddQtdSameItem, RemoveItemToCart, RemoveQtdSameItem } from "./ActionTypes";
+import { AddItemToCart, AddQtdSameItem, ButtonListCart, RemoveItemToCart, RemoveQtdSameItem } from "./ActionTypes";
 
 export const addItemToCart = (data: any): AddItemToCart => ({
     type: 'ADD_ITEM_TO_CART',
