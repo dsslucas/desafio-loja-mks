@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Desafio Loja - MKS Sistemas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Desafio proposto pela MKS Sistemas, que consiste em montar uma aplicação front-end para compras online, com os itens sendo capturados do servidor back-end da companhia.
 
-## Available Scripts
+Link disponível neste [Link](https://desafio-loja-mks.vercel.app/).
 
-In the project directory, you can run:
+## O que foi utilizado?
+- React.js
+- TypeScript
+- Redux
+- Styled Components
+- Axios
+- Jest
+- Vercel (deploy)
 
-### `npm start`
+## Resultado final:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Página principal
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Desktop
+![Desktop](assets/pages/main/desktop.png)
 
-### `npm test`
+Mobile
+![Mobile](assets/pages/main/mobile.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Lista de itens
 
-### `npm run build`
+Desktop
+![Desktop](assets/pages/list/desktop.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Mobile
+![Mobile](assets/pages/list/mobile.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Funcionalidades não solicitadas
+- **Não existe a duplicata de compra**. O produto, uma vez clicado em "Comprar", a aplicação permite apenas o incremento e o decremento da quantidade (sendo o último limitado a 1 produto) e a exclusão do item;
+![Duplicata](assets/gif/duplicata.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Propriedades CSS sobre o cursor do mouse, indicando áreas clicáveis ou não**. Está habilitado no botão "Comprar", o de Quantidade (que não permite o item ter quantidade menor que 1) e no botão "Finalizar compra";
+![Cursor inativo](assets/gif/cursor%20mouse.gif)
 
-### `npm run eject`
+- **Foco na lista de compras quando clicado**, mantendo os componentes abaixo dela desfocados;
+![Foco](assets/gif/foco.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Ao clicar em qualquer campo fora da lista de compras, ela é fechada;
+![Clique fora da lista](assets/gif/clique%20fora%20do%20botao.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Ainda na lista, uma vez aberto, os botões de compra ficam desabilitados;
+- O botão "Finalizar compra" fica válido **apenas** quando existe um valor total maior que zero. Sendo clicado, a aplicação volta com os dados iniciais.
