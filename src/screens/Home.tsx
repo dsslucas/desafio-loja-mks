@@ -20,13 +20,12 @@ const MainContainer = styled.div<Props>`
 
 const Home = (props: any) => {
     const { page } = props
-    console.log("NA HOME: ", page.listOpened, page)
 
     return (
         <MainContainer
             {...page}
             overflowY={page ? "hidden" : "visible"}
-            height={page ? '100vh' : 'auto'}
+            height={page === true ? '100vh' : 'auto'}
         >
             <Header />
             <Section />

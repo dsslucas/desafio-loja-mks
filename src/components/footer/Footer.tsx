@@ -16,7 +16,6 @@ const Footer = (props: any) => {
 }
 
 function mapStateToProps(state: any) {
-    console.log({state})
     return { 
         page: state.page
     }

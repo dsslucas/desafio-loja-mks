@@ -22,13 +22,17 @@ const Header = (props: any) => {
             <Column card={false} header>
                 <Title
                     titulo="MKS"
-                    fontWeight="600" size="40px" lineHeight="19px"
+                    fontWeight="600" fontSize="40px" lineHeight="19px"
                     titleHeader
+
+                    smFontWeight="600" smFontSize="32px" smLineHeight="19px"
                 />
                 <Subtitle
                     subtitulo="Sistemas"
-                    fontWeight="300" size="20px" lineHeight="19px" color="#FFFFFF"
+                    fontWeight="300" fontSize="20px" lineHeight="19px" color="#FFFFFF"
                     marginLeft="10px"
+
+                    smFontWeight="300" smFontSize="16px" smLineHeight="19px"
                 />
             </Column>
 
@@ -46,7 +50,9 @@ const Header = (props: any) => {
 
                     <Span
                         number={buy.length ? buy.length : 0}
-                        fontWeight="800" size="18px" lineHeight="22px"
+                        fontWeight="800" fontSize="18px" lineHeight="22px"
+
+                        smFontWeight="700" smFontSize="12px" smLineHeight="14.63px"
                     />
                 </Button>
             </Column>
@@ -55,7 +61,6 @@ const Header = (props: any) => {
 }
 
 function mapStateToProps(state: any) {
-    console.log({state})
     return { 
         buy: state.buy,
         page: state.page

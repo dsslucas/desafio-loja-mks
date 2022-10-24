@@ -14,7 +14,7 @@ interface Props {
     borderRadius?: string;
     backgroundHover?: string;
     borderColorHover?: string;
-    size?: string;
+    fontSize?: string;
     fontWeight?: string;
     lineHeight?: string;
     titleHeader?: string;
@@ -22,6 +22,12 @@ interface Props {
     marginLeft?: string;
     overflowY?: string;
     bottom?: string;
+
+    // Responsive
+    smFontWeight?: string;
+    smFontSize?: string;
+    smLineHeight?: string
+
 }
 
 // Card
@@ -66,6 +72,12 @@ export const CardTitle = styled.h4`
     font-size: 16px;
     line-height: 19px;
     color: #2C2C2C;
+
+    @media screen and (max-width: 600px){
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 19px;
+    }
 `
 
 export const CardPrice = styled.span`
@@ -88,16 +100,22 @@ export const CardTextProduct = styled.div`
 export const CardDescriptionPrice = styled.p<Props>`
     font-family: 'Montserrat';
     color: ${props => props.color};
-    font-size: ${props => props.size};
+    font-size: ${props => props.fontSize};
     font-style: normal;
     font-weight: ${props => props.fontWeight};
     line-height: ${props => props.lineHeight};
+
+    @media screen and (max-width: 600px){
+        font-weight: ${props => props.smFontWeight};
+        line-height: ${props => props.smLineHeight};
+        font-size: ${props => props.smFontSize};
+    }
 `
 
 export const CardDescriptionItem = styled.p<Props>`
     font-family: 'Montserrat';
     color: ${props => props.color};
-    font-size: ${props => props.size};
+    font-size: ${props => props.fontSize};
     font-style: normal;
     font-weight: ${props => props.fontWeight};
     line-height: ${props => props.lineHeight};

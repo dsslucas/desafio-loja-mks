@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch} from "react-redux";
 import { addItemToCart } from "../../redux/actions/Buy";
 import Button from "../button/Button";
 import Image from "../image/Image";
@@ -14,7 +14,7 @@ const Card = (props: any) => {
         <CardComponent {...props}>
             <CardMainContent>
                 <CardImage>
-                    <Image image={item.photo} imageWidth="fit-content" />
+                    <Image image={item.photo} imageWidth="fit-content" smWidth="fit-content" />
                 </CardImage>
 
                 <CardTitleAndPrice>
@@ -22,9 +22,11 @@ const Card = (props: any) => {
 
                     <CardPrice>
                         <CardDescriptionPrice {...props}
-                            color="#FFFFFF" size='0.938rem'
+                            color="#FFFFFF" fontSize='0.938rem'
                             fontWeight="700"
                             lineHeight="15px"
+
+                            smFontWeight="700" smFontSize="15px" smLineHeight="15px"
                         >
                             R${Math.trunc(item.price).toLocaleString('pt-br')}
                         </CardDescriptionPrice>
@@ -33,8 +35,10 @@ const Card = (props: any) => {
 
                 <CardTextProduct>
                     <CardDescriptionItem {...props}
-                        color="#2C2C2C" size='0.625rem'
+                        color="#2C2C2C" fontSize='0.625rem'
                         fontWeight="600" lineHeight="12px"
+
+                        smFontWeight="600" smFontSize="10px" smLineHeight="12px"
                     >
                         {item.description}
                     </CardDescriptionItem>
@@ -50,20 +54,18 @@ const Card = (props: any) => {
                 borderColor="#0F52BA" borderColorHover={disabled || menuOpened ? "#0F52BA" : "#0D47A0"}
                 style={disabled || menuOpened ? { cursor: "not-allowed" } : { cursor: "pointer" }}
                 // data={props}
-                fontWeight="600" size="14px" lineHeight="18px"
+                fontWeight="600" fontSize="14px" lineHeight="18px"
                 disabled={disabled || menuOpened}
                 onClick={() => {
                     dispatch(addItemToCart(item))
                 }}
+                smHeight="36.72px" smFontWeight="600" smFontSize="14px" smLineHeight="18px"
             >
                 <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.737212" fillRule="evenodd" clipRule="evenodd" d="M3 1L1 3.7V13.15C1 13.8956 1.59695 14.5 2.33333 14.5H11.6667C12.403 14.5 13 13.8956 13 13.15V3.7L11 1H3Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     <path opacity="0.737212" d="M1 4.375H13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     <path opacity="0.737212" d="M10 7C10 8.24264 8.82475 9.25 7.375 9.25C5.92525 9.25 4.75 8.24264 4.75 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-
-
-
                 COMPRAR
             </Button>
 

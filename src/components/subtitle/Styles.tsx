@@ -25,6 +25,9 @@ interface Props {
 
     // Responsive
     smDisplay?: string;
+    smFontWeight?: string;
+    smFontSize?: string;
+    smLineHeight?: string
 }
 
 export const SubtitleComponent = styled.p<Props>`
@@ -39,7 +42,9 @@ export const SubtitleComponent = styled.p<Props>`
     margin-left: ${props => props.marginLeft ? props.marginLeft : '0'};
 
     @media screen and (max-width: 600px){
-        font-size: 16px;
-        display: ${props => props.smDisplay}
+        display: ${props => props.smDisplay};
+        font-weight: ${props => props.smFontWeight};
+        font-size: ${props => props.smFontSize};
+        line-height: ${props => props.smLineHeight};
     }
 `

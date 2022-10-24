@@ -42,7 +42,7 @@ function Section(props: any) {
                             key={index}
                             item={item}
                             idReturnedRedux={array}
-                            menuOpened={page}
+                            menuOpened={page.listOpened}
                         />
                     )
                 })
