@@ -3,7 +3,7 @@ import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
 import Section from '../components/section/Section'
 import { connect } from 'react-redux'
-import ListCart from '../components/ListCart'
+import ListCart from '../components/listCart/ListCart'
 import styled from 'styled-components'
 
 interface Props {
