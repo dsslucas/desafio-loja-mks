@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import styled from 'styled-components';
+import { useDispatch, useSelector } from "react-redux";
 import { buttonListCart } from "../../redux/actions/Page";
 import api from "../../services/api";
 import Card from "../card/Card";
@@ -13,15 +12,14 @@ function Section(props: any) {
     // Envio do clique para o Redux
     const dispatch = useDispatch()
 
+    // Equivalente ao MapStateToProps
+    const selector = useSelector((state:any) => state)
+
     // Armazenamento dos IDs dos produtos, importante para desativar o botão para a compra do mesmo produto
     const array: any = new Set();
 
-    // Vindo do Redux
-    const { buy } = props
-    const { page } = props
-
-    if (Array.isArray(buy)) {
-        buy.map((item: any) => {
+    if (Array.isArray(selector.buy)) {
+        selector.buy.map((item: any) => {
             array.add(item.id)
         })
     }
@@ -36,9 +34,9 @@ function Section(props: any) {
 
     return (
         <SectionComponent
-            background={page === true ? "rgba(229,229,229,0.68)" : "#E5E5E5"}
-            opacity={page === true ? "0.5" : "1"}
-            onClick={() => dispatch(buttonListCart(false))}
+            background={selector.page.menuOpened === true ? "rgba(229,229,229,0.68)" : "#E5E5E5"}
+            opacity={selector.page.menuOpened === true ? "0.5" : "1"}
+            onClick={selector.page.menuOpened ? () => null : () => dispatch(buttonListCart(false))}
         >
             <GridWrapper>
                 {apiContent.map((item: any, index: any) => {
@@ -47,7 +45,7 @@ function Section(props: any) {
                             key={index}
                             item={item}
                             idReturnedRedux={array}
-                            menuOpened={page.listOpened}
+                            menuOpened={selector.page.listOpened}
                         />
                     )
                 })
@@ -57,11 +55,4 @@ function Section(props: any) {
     )
 }
 
-function mapStateToProps(state: any) {
-    return {
-        buy: state.buy,
-        page: state.page
-    }
-}
-
-export default connect(mapStateToProps)(Section)
+export default (Section)

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../redux/actions/Buy";
 import Button from "../button/Button";
 import Image from "../image/Image";
@@ -10,8 +10,9 @@ const Card = (props: any) => {
     const dispatch = useDispatch()
     const { idReturnedRedux, item, menuOpened } = props;
     const disabled = idReturnedRedux.has(item.id);
+
     return (
-        <CardComponent {...props}>
+        <CardComponent {...props} opacity={menuOpened ? '0.4' : "1"}>
             <CardMainContent>
                 <CardImage>
                     <Image image={item.photo} imageWidth="fit-content" smWidth="fit-content" />
@@ -47,15 +48,15 @@ const Card = (props: any) => {
             </CardMainContent>
 
             <Button
-                background="#0F52BA" backgroundHover={disabled || menuOpened ? "#0F52BA" : "#0D47A0"} color="#FFFFFF"
+                background="#0F52BA" 
+                backgroundHover={disabled || menuOpened ? "#0F52BA" : "#0D47A0"} color="#FFFFFF"
                 width="100%" height="31.91px"
                 padding="0" margin="0" justifyContent="space-evenly"
                 borderLeftRightBottom="0.5rem" borderWidth="0"
                 borderColor="#0F52BA" borderColorHover={disabled || menuOpened ? "#0F52BA" : "#0D47A0"}
                 style={disabled || menuOpened ? { cursor: "not-allowed" } : { cursor: "pointer" }}
-                // data={props}
                 fontWeight="600" fontSize="14px" lineHeight="18px"
-                disabled={disabled || menuOpened}
+                disabled={disabled || menuOpened }
                 onClick={() => {
                     dispatch(addItemToCart(item))
                 }}
@@ -68,13 +69,6 @@ const Card = (props: any) => {
                 </svg>
                 COMPRAR
             </Button>
-
-
-
-
-            {/* <CardButton onClick={() => console.log("Cliquei")}>
-
-            </CardButton> */}
         </CardComponent>
     )
 }

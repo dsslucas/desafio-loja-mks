@@ -22,6 +22,7 @@ interface Props {
     marginLeft?: string;
     overflowY?: string;
     bottom?: string;
+    opacity?: string;
 
     // Responsive
     smFontWeight?: string;
@@ -31,11 +32,12 @@ interface Props {
 }
 
 // Card
-export const CardComponent = styled.div`
+export const CardComponent = styled.div<Props>`
     background-color: #FFFFFF;
     width: 13.598rem;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
     border-radius: 0.5rem;
+    opacity: ${props => props.opacity};
 
     @media screen and (max-width: 600px){
         width: 15.656rem;

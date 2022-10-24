@@ -23,13 +23,13 @@ const Home = (props: any) => {
 
     return (
         <MainContainer
-            {...page}
-            overflowY={page ? "hidden" : "visible"}
-            height={page === true ? '100vh' : 'auto'}
+            {...page.listOpened}
+            overflowY={page.listOpened ? "hidden" : "visible"}
+            height={page.listOpened === true ? '100vh' : 'auto'}
         >
             <Header />
             <Section />
-            {page === true && <ListCart />}
+            {page.listOpened === true && <ListCart />}
             <Footer />            
         </MainContainer>
     )

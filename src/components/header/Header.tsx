@@ -16,8 +16,8 @@ const Header = (props: any) => {
 
     return (
         <HeaderComponent {...page} 
-            background={page === true ? "rgba(15,82,186,0.74)" : "#0F52BA"}
-            opacity={page === true ? "0.5" : "1"}
+            background={page.listOpened === true ? "rgba(15,82,186,0.74)" : "#0F52BA"}
+            opacity={page.listOpened === true ? "0.5" : "1"}
         >
             <Column card={false} header>
                 <Title

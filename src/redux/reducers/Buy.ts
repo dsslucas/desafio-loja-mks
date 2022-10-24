@@ -1,5 +1,4 @@
 import type { Action } from '@reduxjs/toolkit'
-import { connect } from 'react-redux';
 import { AddItemToCart } from '../actions/ActionTypes'
 
 export const initialState: any = {
@@ -47,15 +46,15 @@ const buyReducer = (state = initialState, action: Action) => {
             }
             break;
         }
-        case 'ADD_QTD_ITEM': {
+        case 'ADD_QTD_SAME_ITEM': {
             console.log("[REDUCER] ADICIONAR QTD AO ITEM: ", action)
             break;
         }
-        case 'REMOVE_ITEM': {
+        case 'REMOVE_ITEM_TO_CART': {
             console.log("[REDUCER] REMOVER ITEM: ", action)
             break;
         }
-        case 'REMOVE_QTD_ITEM': {
+        case 'REMOVE_QTD_SAME_ITEM': {
             console.log("[REDUCER] RETIRAR QTD AO ITEM: ", action)
             break;
         }

@@ -7,8 +7,8 @@ const Footer = (props: any) => {
 
     return (
         <FooterComponent
-            background={page === true ? "rgba(238,238,238,0.77)" : "#EEEEEE"}
-            opacity={page === true ? "0.5" : "1"}
+            background={page.listOpened === true ? "rgba(238,238,238,0.77)" : "#EEEEEE"}
+            opacity={page.listOpened === true ? "0.5" : "1"}
         >
             MKS sistemas © Todos os direitos reservados
         </FooterComponent>

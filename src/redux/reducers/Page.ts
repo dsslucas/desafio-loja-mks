@@ -8,18 +8,14 @@ export const initialState: any = {
 
 const pageReducer = (state = initialState, action: Action) => {
     const temp = action as ButtonListCart;
-    // console.log(`
-    // DENTRO DO REDUCER:
-    // SITUAÇÃO DO ESTADO: ${state.id}
-    // `)
     switch (action.type) {
         case 'BUTTON_LIST_CART': {
-            console.log("NO REDUCER: ", temp.payload)
-            return temp.payload
-            // return {listOpened: !state.listOpened
+            return {...state, listOpened: temp.payload}
         }
         
-        default: return state
+        default: 
+            if (state.listOpened === undefined) return false
+            else return state
     }
 }
 
