@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { connect, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import styled from 'styled-components';
+import { buttonListCart } from "../../redux/actions/Page";
 import api from "../../services/api";
 import Card from "../card/Card";
 import { GridWrapper, SectionComponent } from "./Styles";
@@ -8,6 +9,9 @@ import { GridWrapper, SectionComponent } from "./Styles";
 function Section(props: any) {
     // Conteúdo vindo da API
     const [apiContent, setApiContent] = useState([])
+
+    // Envio do clique para o Redux
+    const dispatch = useDispatch()
 
     // Armazenamento dos IDs dos produtos, importante para desativar o botão para a compra do mesmo produto
     const array: any = new Set();
@@ -34,6 +38,7 @@ function Section(props: any) {
         <SectionComponent
             background={page === true ? "rgba(229,229,229,0.68)" : "#E5E5E5"}
             opacity={page === true ? "0.5" : "1"}
+            onClick={() => dispatch(buttonListCart(false))}
         >
             <GridWrapper>
                 {apiContent.map((item: any, index: any) => {

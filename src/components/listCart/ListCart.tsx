@@ -20,7 +20,7 @@ const ListCart = (props: any) => {
     const width = window.innerWidth
 
     return (
-        <ListWrapper >
+        <ListWrapper>
             <ListHeader>
                 <Title
                     titulo="Carrinho de compras"
