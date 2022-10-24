@@ -1,24 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { FooterComponent } from "./Styles";
 
-const Footer = (props: any) => {
-    const {page} = props
+const Footer = () => {
+    // State from Redux
+    const {listOpened} = useSelector((state:any) => state.page)
 
     return (
         <FooterComponent
-            background={page.listOpened === true ? "rgba(238,238,238,0.77)" : "#EEEEEE"}
-            opacity={page.listOpened === true ? "0.5" : "1"}
+            background={listOpened === true ? "rgba(238,238,238,0.77)" : "#EEEEEE"}
+            opacity={listOpened === true ? "0.5" : "1"}
         >
             MKS sistemas © Todos os direitos reservados
         </FooterComponent>
     )
 }
 
-function mapStateToProps(state: any) {
-    return { 
-        page: state.page
-    }
-}
-
-export default connect(mapStateToProps)(Footer);
+export default (Footer);

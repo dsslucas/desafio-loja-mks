@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
 import Section from '../components/section/Section'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import ListCart from '../components/listCart/ListCart'
 import styled from 'styled-components'
 
@@ -18,9 +18,8 @@ const MainContainer = styled.div<Props>`
     overflow-y: ${props => props.overflowY};
 `
 
-const Home = (props: any) => {
-    const { page } = props
-
+const Home = () => {
+    const { page } = useSelector((state: any) => state)
     return (
         <MainContainer
             {...page.listOpened}
@@ -35,8 +34,4 @@ const Home = (props: any) => {
     )
 }
 
-function mapStateToProps(state: any) {
-    return { page: state.page }
-}
-
-export default connect(mapStateToProps)(Home);
+export default (Home);

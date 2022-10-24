@@ -136,7 +136,6 @@ export const ListDividerQtdSpan = styled.div`
     }
 `
 
-// background-color: #0F52BA;
 export const ListFinalCart = styled.div`
     display: flex;
     width: 100%;
@@ -147,7 +146,6 @@ export const ListFinalCart = styled.div`
     @media screen and (max-width: 600px){
         height: 65.86px;
     }
-    
 `
 
 export const ListFinalButton = styled.div`
@@ -157,5 +155,4 @@ export const ListFinalButton = styled.div`
     @media screen and (max-width: 600px){
         height: 65.86px;
     }
-
 `

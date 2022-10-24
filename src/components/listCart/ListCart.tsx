@@ -1,29 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { addQtdSameItem, removeItemCart, removeQtdSameItem } from "../../redux/actions/Buy";
+
+// Redux Imports
+import { useDispatch, useSelector } from "react-redux";
+import { addQtdSameItem, eraseList, removeItemCart, removeQtdSameItem } from "../../redux/actions/Buy";
 import { buttonListCart } from "../../redux/actions/Page";
+
+// Components
 import Button from "../button/Button";
 import Image from "../image/Image";
 import Span from "../span/Span";
 import Subtitle from "../subtitle/Subtitle";
 import Title from "../title/Title";
 
+// Styles
 import { ListContent, ListDividerQtdSpan, ListFinalButton, ListFinalCart, ListHeader, ListItemMain, ListItemPrice, ListItemQtd, ListItemQtdButtons, ListItemRemove, ListWrapper } from "./Styles";
 
-const ListCart = (props: any) => {
+const ListCart = () => {
+    // Array of items on card. Important for send it to Redux
     const [shoppingList, setShoppingList] = useState<any>([])
 
-    // Conexão com o Redux
+    // Total value of cart
+    const [valueCart, setValueCart] = useState(0)
+
+    // Redux Dispatch
     const dispatch = useDispatch()
 
-    // Pega os dados do Redux
+    // Catch data from Redux
     const selector = useSelector((state: any) => state.buy)
 
-    // Necessário para renderização do icone de exclusão
+    // Used for conditional renderize for mobile and desktop (button of exclusion)
     const width = window.innerWidth
 
     useEffect(() => {
         setShoppingList(selector)
+
+        // Sum of values of cart
+        const initialValue = 0
+        const totalCart = selector.reduce((initialValue: number, item: any) => {
+            return initialValue + (item.qtd * item.price)
+        }, initialValue)
+        setValueCart(totalCart)
     }, [selector])
 
     return (
@@ -32,13 +48,11 @@ const ListCart = (props: any) => {
                 <Title
                     titulo="Carrinho de compras"
                     fontWeight="800" fontSize="27px" lineHeight="32.91px" width="40%"
-
                     smFontWeight="700" smfontSize="27px" smLineHeight="33px" smWidth="60%"
                 />
                 <Button
                     onClick={() => dispatch(buttonListCart(false))}
-                    background="transparent"
-                    borderWidth="0px"
+                    background="transparent" borderWidth="0px"
                     style={{ cursor: 'pointer' }}
                 >
                     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,11 +69,8 @@ const ListCart = (props: any) => {
                             {width <= 600 && (
                                 <ListItemRemove>
                                     <Button
-                                        color="transparent"
-                                        border-width="0px" borderWidth="0" justifyContent="justify-content"
-                                        background="transparent"
-                                        style={{ cursor: 'pointer' }}
-                                        padding="0"
+                                        color="transparent" border-width="0px" borderWidth="0" justifyContent="justify-content" background="transparent"
+                                        style={{ cursor: 'pointer' }} padding="0"
                                         onClick={() => dispatch(removeItemCart(shoppingList, item))}
                                     >
                                         <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,10 +85,10 @@ const ListCart = (props: any) => {
 
                             <Title
                                 titulo={item.name}
-                                fontWeight="600" fontSize="13px" lineHeight="17px" color="#2C2C2C"
-                                width="30%"
-
-                                smFontWeight="600" smfontSize="16px" smLineHeight="19px" smWidth="211px" smTextAlign="center"
+                                color="#2C2C2C" width="30%"
+                                fontWeight="600" fontSize="13px" lineHeight="17px"
+                                smFontWeight="600" smfontSize="16px" smLineHeight="19px"
+                                smWidth="211px" smTextAlign="center"
                             />
 
                             <ListDividerQtdSpan>
@@ -96,19 +107,18 @@ const ListCart = (props: any) => {
                                             smFontSize="24px" smFontWeight="400" smLineHeight="29.26px"
                                             disabled={item.qtd <= 1 ? true : false}
                                             style={item.qtd <= 1 ? { cursor: "not-allowed" } : { cursor: "pointer" }}
-                                            onClick={item.qtd <= 1 ? () => null : () => dispatch(removeQtdSameItem(shoppingList, item))}                                            
+                                            onClick={item.qtd <= 1 ? () => null : () => dispatch(removeQtdSameItem(shoppingList, item))}
                                         >
                                             -
                                         </Button>
                                         <Span
                                             number={item.qtd}
                                             fontWeight="600" fontSize="8px" lineHeight="10px" color="#000000"
-
                                             smFontSize="20px" smFontWeight="400px" smLineHeight="24.38px"
                                         />
                                         <Button
                                             color="#000000"
-                                            border-width="0px" borderWidth="0" justifyContent="justify-content"
+                                            borderWidth="0" justifyContent="justify-content"
                                             background="transparent"
                                             style={{ cursor: 'pointer' }}
                                             fontWeight="600" fontSize="12px" lineHeight="14.63px"
@@ -124,7 +134,6 @@ const ListCart = (props: any) => {
                                     <Span
                                         number={`R$${Math.trunc(item.price).toLocaleString('pt-br')}`}
                                         fontWeight="900" fontSize="14px" lineHeight="17px" color="#000000"
-
                                         smFontWeight="700" smFontSize="15px" smLineHeight="15px" smColor="#FFFFFF"
                                     />
                                 </ListItemPrice>
@@ -135,7 +144,7 @@ const ListCart = (props: any) => {
                                     width > 600 && (
                                         <Button
                                             color="transparent"
-                                            border-width="0px" borderWidth="0" justifyContent="justify-content"
+                                            borderWidth="0" justifyContent="justify-content"
                                             background="transparent"
                                             style={{ cursor: 'pointer' }}
                                             padding="0"
@@ -154,8 +163,6 @@ const ListCart = (props: any) => {
                 })}
             </ListContent>
 
-
-
             <ListFinalCart>
                 <Title
                     titulo="Total:"
@@ -163,7 +170,7 @@ const ListCart = (props: any) => {
                     smFontWeight="800" smfontSize="28px" smLineHeight="15px"
                 />
                 <Title
-                    titulo="R$ 350"
+                    titulo={`R$${Math.trunc(valueCart).toLocaleString('pt-br')}`}
                     fontWeight="800" fontSize="28px" lineHeight="15px"
                     smFontWeight="800" smfontSize="28px" smLineHeight="15px"
                 />
@@ -175,9 +182,14 @@ const ListCart = (props: any) => {
                     background="#000000" color="#FFFFFF" borderWidth="0"
                     justifyContent="center"
                     fontWeight="800" fontSize="28px" lineHeight="15px"
-                    style={{ cursor: 'pointer' }}
-
                     smHeight="65.86px" smFontSize="20px" smFontWeight="700" smLineHeight="15px"
+                    disabled={valueCart === 0 ? true : false}
+                    style={valueCart === 0 ? { cursor: "not-allowed" } : { cursor: "pointer" }}
+                    onClick={valueCart === 0 ? () => null : () => {
+                        alert("Compra efetuada com sucesso!")
+                        dispatch(eraseList())
+                        dispatch(buttonListCart(false))
+                    }}
                 >
                     Finalizar compra
                 </Button>

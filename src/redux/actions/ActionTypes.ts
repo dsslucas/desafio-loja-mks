@@ -1,9 +1,3 @@
-// Constantes
-// export const ADD_ITEM_TO_CART = 'ADD_ITEM'
-// export const ADD_QTD_ITEM = 'ADD_QTD_ITEM'
-// export const REMOVE_ITEM_TO_CART = 'REMOVE_ITEM'
-// export const REMOVE_QTD_ITEM = 'REMOVE_QTD_ITEM'
-
 import { Action } from "redux";
 
 export interface Cart { 
@@ -13,6 +7,10 @@ export interface Cart {
     photo: string;
     price: number;
     qtd: number
+}
+
+export interface EraseList extends Action {
+    type: "ERASE_LIST"
 }
 
 export interface AddItemToCart extends Action {

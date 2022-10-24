@@ -28,7 +28,6 @@ interface Props {
     smFontWeight?: string;
     smFontSize?: string;
     smLineHeight?: string
-
 }
 
 // Card

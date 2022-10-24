@@ -11,17 +11,12 @@ export const SectionComponent = styled.section<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: ${props => props.background};
     opacity: ${props => props.opacity};     
 
     @media screen and (max-width: 600px){
         padding: 0.75rem;
     };
-
-    @media (min-width: 1200px) {
-        
-    }
 
     @media (min-width: 1400px) {
         padding: 0;

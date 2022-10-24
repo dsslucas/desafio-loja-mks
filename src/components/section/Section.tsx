@@ -5,21 +5,21 @@ import api from "../../services/api";
 import Card from "../card/Card";
 import { GridWrapper, SectionComponent } from "./Styles";
 
-function Section(props: any) {
-    // Conteúdo vindo da API
+function Section() {
+    // API content
     const [apiContent, setApiContent] = useState([])
 
-    // Envio do clique para o Redux
+    // Send data for Redux
     const dispatch = useDispatch()
 
-    // Equivalente ao MapStateToProps
-    const selector = useSelector((state:any) => state)
+    // Received data from Redux
+    const {buy, page} = useSelector((state:any) => state)
 
-    // Armazenamento dos IDs dos produtos, importante para desativar o botão para a compra do mesmo produto
+    // ID products storage. Important for block the button if the item goes to cart
     const array: any = new Set();
 
-    if (Array.isArray(selector.buy)) {
-        selector.buy.map((item: any) => {
+    if (Array.isArray(buy)) {
+        buy.map((item: any) => {
             array.add(item.id)
         })
     }
@@ -34,9 +34,9 @@ function Section(props: any) {
 
     return (
         <SectionComponent
-            background={selector.page.menuOpened === true ? "rgba(229,229,229,0.68)" : "#E5E5E5"}
-            opacity={selector.page.menuOpened === true ? "0.5" : "1"}
-            onClick={selector.page.menuOpened ? () => null : () => dispatch(buttonListCart(false))}
+            background={page.menuOpened === true ? "rgba(229,229,229,0.68)" : "#E5E5E5"}
+            opacity={page.menuOpened === true ? "0.5" : "1"}
+            onClick={page.menuOpened ? () => null : () => dispatch(buttonListCart(false))}
         >
             <GridWrapper>
                 {apiContent.map((item: any, index: any) => {
@@ -45,7 +45,7 @@ function Section(props: any) {
                             key={index}
                             item={item}
                             idReturnedRedux={array}
-                            menuOpened={selector.page.listOpened}
+                            menuOpened={page.listOpened}
                         />
                     )
                 })

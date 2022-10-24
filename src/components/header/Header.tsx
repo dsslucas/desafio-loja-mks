@@ -3,19 +3,19 @@ import Subtitle from "../subtitle/Subtitle";
 import Title from "../title/Title";
 import Span from "../span/Span";
 import Button from "../button/Button";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { buttonListCart } from "../../redux/actions/Page";
-import {Column, HeaderComponent} from "./Styles"
+import { Column, HeaderComponent } from "./Styles"
 
+const Header = () => {
+    // State from Redux
+    const { buy, page } = useSelector((state: any) => state)
 
-const Header = (props: any) => {
-    const { buy, page } = props
-
-    // Comunicação com o Redux
+    // Send data to Redux
     const dispatch = useDispatch()
 
     return (
-        <HeaderComponent {...page} 
+        <HeaderComponent {...page}
             background={page.listOpened === true ? "rgba(15,82,186,0.74)" : "#0F52BA"}
             opacity={page.listOpened === true ? "0.5" : "1"}
         >
@@ -60,11 +60,4 @@ const Header = (props: any) => {
     )
 }
 
-function mapStateToProps(state: any) {
-    return { 
-        buy: state.buy,
-        page: state.page
-    }
-}
-
-export default connect(mapStateToProps)(Header);
+export default (Header);

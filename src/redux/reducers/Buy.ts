@@ -6,37 +6,24 @@ export const initialState: any = []
 const buyReducer = (state = initialState, action: Action) => {
     const addItem = action as AddItemToCart;
     const removeItem = action as RemoveItemToCart;
-
     const increaseQtdItem = action as AddQtdSameItem;
     const decreaseQtdItem = action as RemoveQtdSameItem;
-    switch (action.type) {
-        case 'ADD_ITEM_TO_CART': {
-            // Primeiro dado que entra
-            if (state.id === null) {
-                return [{
-                    id: addItem.payload.id,
-                    name: addItem.payload.name,
-                    brand: addItem.payload.brand,
-                    description: addItem.payload.description,
-                    photo: addItem.payload.photo,
-                    price: addItem.payload.price,
-                    qtd: 1
-                }]
-            }
 
-            // Dados seguintes
-            if (state.id === undefined) {
-                return [...state, {
-                    id: addItem.payload.id,
-                    name: addItem.payload.name,
-                    brand: addItem.payload.brand,
-                    description: addItem.payload.description,
-                    photo: addItem.payload.photo,
-                    price: addItem.payload.price,
-                    qtd: 1
-                }]
-            }
-            break;
+    console.log(state)
+
+    switch (action.type) {
+        case 'ERASE_LIST':
+            return []
+        case 'ADD_ITEM_TO_CART': {
+            return [...state, {
+                id: addItem.payload.id,
+                name: addItem.payload.name,
+                brand: addItem.payload.brand,
+                description: addItem.payload.description,
+                photo: addItem.payload.photo,
+                price: addItem.payload.price,
+                qtd: 1
+            }]
         }
         case 'ADD_QTD_SAME_ITEM': {
             const newList = increaseQtdItem.currentState.map((item: any) => {
@@ -56,7 +43,8 @@ const buyReducer = (state = initialState, action: Action) => {
             })
             return newList
         }
-        default: return state
+        default: 
+            return state
     }
 }
 

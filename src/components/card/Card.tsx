@@ -7,8 +7,12 @@ import Image from "../image/Image";
 import { CardComponent, CardDescriptionItem, CardDescriptionPrice, CardImage, CardMainContent, CardPrice, CardTextProduct, CardTitle, CardTitleAndPrice } from "./Styles";
 
 const Card = (props: any) => {
+    // Send data to Redux
     const dispatch = useDispatch()
+
     const { idReturnedRedux, item, menuOpened } = props;
+
+    // Disable button if the item goes to cart
     const disabled = idReturnedRedux.has(item.id);
 
     return (
