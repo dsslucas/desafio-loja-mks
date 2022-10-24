@@ -5,9 +5,10 @@ export const addItemToCart = (data: any): AddItemToCart => ({
     payload: data
 });
 
-export const addQtdSameItem = (data: any): AddQtdSameItem => ({
+export const addQtdSameItem = (currentState: any, itemInformedToIncreaseQtd: any): AddQtdSameItem => ({
     type: 'ADD_QTD_SAME_ITEM',
-    payload: data
+    currentState: currentState,
+    itemInformedToIncreaseQtd: itemInformedToIncreaseQtd
 })
 
 export const removeItemCart = (currentState: any, itemInformedToExclude: any): RemoveItemToCart => ({

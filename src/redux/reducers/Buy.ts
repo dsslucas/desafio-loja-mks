@@ -1,21 +1,13 @@
 import type { Action } from '@reduxjs/toolkit'
-import { AddItemToCart, RemoveItemToCart } from '../actions/ActionTypes'
-
-// export const initialState: any = {
-//     id: null,
-//     name: null,
-//     brand: null,
-//     description: null,
-//     photo: null,
-//     price: null,
-//     qtd: null
-// }
+import { AddItemToCart, AddQtdSameItem, RemoveItemToCart } from '../actions/ActionTypes'
 
 export const initialState: any = []
 
 const buyReducer = (state = initialState, action: Action) => {
     const addItem = action as AddItemToCart;
     const removeItem = action as RemoveItemToCart;
+
+    const increaseQtdItem = action as AddQtdSameItem;
     switch (action.type) {
         case 'ADD_ITEM_TO_CART': {
             // Primeiro dado que entra
@@ -46,16 +38,15 @@ const buyReducer = (state = initialState, action: Action) => {
             break;
         }
         case 'ADD_QTD_SAME_ITEM': {
-            console.log("[REDUCER] ADICIONAR QTD AO ITEM: ", action)
-            break;
+            console.log(increaseQtdItem)
+            const newList = increaseQtdItem.currentState.map((item: any) => {
+                if (item.id === increaseQtdItem.itemInformedToIncreaseQtd.id) item.qtd = item.qtd + 1
+                return item
+            })
+            return newList
         }
         case 'REMOVE_ITEM_TO_CART': {
-            console.log("[REDUCER] REMOVER ITEM: ", action)
-            console.log(removeItem.currentState)
-            console.log(removeItem.itemInformedToExclude.id)
-
-            const newList = removeItem.currentState.filter((item:any) => item.id !== removeItem.itemInformedToExclude.id)
-
+            const newList = removeItem.currentState.filter((item: any) => item.id !== removeItem.itemInformedToExclude.id)
             return newList
         }
         case 'REMOVE_QTD_SAME_ITEM': {

@@ -17,7 +17,11 @@ const store = configureStore({
   reducer: {
     buy: buyReducer,
     page: pageReducer
-  }
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+  })
 })
 
 root.render(
