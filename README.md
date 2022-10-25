@@ -2,16 +2,46 @@
 
 Desafio proposto pela MKS Sistemas, que consiste em montar uma aplicação front-end para compras online, com os itens sendo capturados do servidor back-end da companhia.
 
-Link disponível neste [Link](https://desafio-loja-mks.vercel.app/).
+Site disponível neste [Link](https://desafio-loja-mks.vercel.app/).
 
 ## O que foi utilizado?
 - React.js
 - TypeScript
-- Redux
+- Redux Tools
 - Styled Components
 - Axios
-- Jest
 - Vercel (deploy)
+
+## Instruções para instalação
+
+É necessário ter instalado em seu computador o `node` de forma global. Disponível neste [link](https://nodejs.org/en/download/).
+
+Após a instalação, acesse o terminal (prompt de comando, PowerShell ou outro de sua preferência) e digite
+
+```
+npm install
+```
+
+Uma vez instalado, clone este repositório para seu computador utilizando
+
+```
+git clone https://github.com/dsslucas/desafio-loja-mks.git
+```
+
+Com a fase de clonagem concluída, acesse a pasta do projeto em um terminal de sua preferência e baixe as dependências. É importante para o código ser executado.
+
+```
+npm i
+```
+
+Tendo baixado as dependências, você está apto a executar localmente o código. Digite:
+
+```
+npm start
+```
+
+Estando concluído, uma página web será aberta em ```http://localhost:3000```. Com isso, a instalação está concluída.
+
 
 ## Resultado final:
 
@@ -31,7 +61,7 @@ Desktop
 Mobile
 ![Mobile](assets/pages/list/mobile.png)
 
-## Funcionalidades não solicitadas
+## Melhorias no código (que não foram especificadas)
 - **Não existe a duplicata de compra**. O produto, uma vez clicado em "Comprar", a aplicação permite apenas o incremento e o decremento da quantidade (sendo o último limitado a 1 produto) e a exclusão do item;
 ![Duplicata](assets/gif/duplicata.gif)
 
