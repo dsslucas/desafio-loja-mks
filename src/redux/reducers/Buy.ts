@@ -9,8 +9,6 @@ const buyReducer = (state = initialState, action: Action) => {
     const increaseQtdItem = action as AddQtdSameItem;
     const decreaseQtdItem = action as RemoveQtdSameItem;
 
-    console.log(state)
-
     switch (action.type) {
         case 'ERASE_LIST':
             return []
