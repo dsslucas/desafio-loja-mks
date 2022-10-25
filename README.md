@@ -19,7 +19,7 @@ Site disponível neste [Link](https://desafio-loja-mks.vercel.app/).
 Após a instalação, acesse o terminal (prompt de comando, PowerShell ou outro de sua preferência) e digite
 
 ```
-npm install
+npm install -g npm
 ```
 
 Uma vez instalado, clone este repositório para seu computador utilizando
